@@ -1,0 +1,12 @@
+{
+  "name": "cookiebot",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "MoonBarc",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "discord.js": "^12.5.1",
+    "dotenv": "^8.2.0"
+  }
+}
