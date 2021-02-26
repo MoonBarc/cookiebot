@@ -1,5 +1,5 @@
 const djs = require('discord.js')
-const fs = require("fs/promises")
+const fs = require("fs").promises
 const dotenv = require('dotenv')
 
 // load token data
