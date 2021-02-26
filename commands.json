@@ -1,0 +1,20 @@
+[{
+    "name": "cookie",
+    "description": "bakes a cookie",
+    "options": [
+      {
+        "type": 6,
+        "name": "person",
+        "description": "person to give the cookie to",
+        "default": false,
+        "required": false
+      },
+      {
+        "type": 5,
+        "name": "anonymous",
+        "description": "bake anonymously?",
+        "default": false,
+        "required": false
+      }
+    ]
+}]
