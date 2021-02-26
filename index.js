@@ -83,14 +83,14 @@ bot.on("message",async (m) => {
         return
     }
     if(m.content.toLowerCase() == "🍪reload" || m.content.toLowerCase() == "🍪 reload") {
-        if(m.author.id != "285810061672972290") return;
+        if(!config.admins.includes(m.author.id)) return;
         loadPhrases().then(() => {
             m.channel.send("[🍪] Reload successful! :D")
         })
         return
     }
     if(m.content.toLowerCase() == "🍪register" || m.content.toLowerCase() == "🍪 register") {
-        if(m.author.id != "285810061672972290") return;
+        if(!config.admins.includes(m.author.id)) return;
         for(var c of commands) {
             await bot.api.applications(bot.user.id).guilds(m.guild.id).commands.post({data: c})
         }
