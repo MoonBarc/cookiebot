@@ -1,0 +1,13 @@
+[{
+  "name": "statement",
+  "description": "cookie bot will give u an official statement",
+  "options": [
+    {
+      "type": 3,
+      "name": "what",
+      "description": "statement override",
+      "default": false,
+      "required": false
+    }
+  ]
+}]
