@@ -241,10 +241,16 @@ bot.ws.on('INTERACTION_CREATE', async interaction => {
 
 process.on("SIGINT",async () => {
     await bot.user.setStatus("dnd")
+    if(process.env.PTERODACTYL_SUPPORT) {
+        console.log("^c")
+    }
     process.exit(0)
 })
 
 bot.login(process.env.TOKEN).then(() => {
     console.log("Bot logged in!")
+    if(process.env.PTERODACTYL_SUPPORT) {
+        console.log("change this part")
+    }
     loadPhrases()
 })
