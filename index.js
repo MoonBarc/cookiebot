@@ -110,6 +110,7 @@ bot.on("message",async (m) => {
         return
     }
     if(m.content.toLowerCase() == "🍪debug" || m.content.toLowerCase() == "🍪 debug") {
+        if(!config.admins.includes(m.author.id)) return;
         var list = await bot.api.applications(bot.user.id).guilds(m.guild.id).commands.get()
         var glist = await bot.api.applications(bot.user.id).commands.get()
         var ms = "**GUILD**\n"
