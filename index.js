@@ -264,6 +264,7 @@ process.on("SIGINT",async () => {
 
 bot.login(process.env.TOKEN).then(() => {
     console.log("Bot logged in!")
+    console.log(`Running Cookie Bot ${version} by MoonBarc`)
     if(process.env.PTERODACTYL_SUPPORT) {
         console.log("change this part")
     }
