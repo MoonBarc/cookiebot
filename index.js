@@ -33,6 +33,10 @@ let commands = []
 let gcommands = []
 let emojis = []
 
+function bakeCookie() {
+    return emojis[Math.floor(Math.random() * emojis.length)];
+}
+
 async function loadPhrases() {
     try {
         phrases = JSON.parse(await fs.readFile(__dirname + "/phrases.json"))
@@ -96,7 +100,7 @@ bot.on("message",async (m) => {
             return;
         }
         m.channel.send(config.message)
-        m.channel.send("🍪")
+        m.channel.send(bakeCookie())
         waiting.push(m.author.id)
         setTimeout(() => {
             waiting = waiting.filter(e => e !== m.author.id);
@@ -202,11 +206,23 @@ bot.ws.on('INTERACTION_CREATE', async interaction => {
                     }
                 }
             })
-            bot.channels.cache.get(interaction.channel_id).send("🍪")
+            bot.channels.cache.get(interaction.channel_id).send(bakeCookie())
             return;
         }
         // do stuff and respond here
-        console.log(interaction.data.options[0].value + " was given a cookie from " + interaction.member.user.username)
+        console.log(interaction.data.options[0].value + " was/tried to be given a cookie from " + interaction.member.user.username)
+        if(interaction.data.options[0].value == interaction.member.user.id) {
+            bot.api.interactions(interaction.id, interaction.token).callback.post({data: 
+                {
+                    type: 3,
+                    data: {
+                        content: `Cookie Bot is upset,\nyou can't give yourself a cookie!\njust run /cookie so i can give you a cookie\n>:(`,
+                        flags: 1 << 6
+                    }
+                }
+            })
+            return;
+        }
         await bot.api.interactions(interaction.id, interaction.token).callback.post({data: 
             {
                 type: 3,
@@ -216,7 +232,7 @@ bot.ws.on('INTERACTION_CREATE', async interaction => {
                 }
             }
         })
-        bot.channels.cache.get(interaction.channel_id).send("🍪")
+        bot.channels.cache.get(interaction.channel_id).send(bakeCookie())
     }else if(interaction.data.name.toLowerCase() == "statement") {
         // this is protected >:(
         if(!config.admins.includes(interaction.member.user.id)) {
