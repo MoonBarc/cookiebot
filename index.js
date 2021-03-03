@@ -9,7 +9,7 @@
 */
 
 // Cookie Bot 
-const version = "v0.0.1"
+const version = "v0.0.3"
 // Created by MoonBarc because he was bored.
 
 const djs = require('discord.js')
@@ -206,6 +206,7 @@ bot.ws.on('INTERACTION_CREATE', async interaction => {
             return;
         }
         // do stuff and respond here
+        console.log(interaction.data.options[0].value + " was given a cookie from " + interaction.member.user.username)
         await bot.api.interactions(interaction.id, interaction.token).callback.post({data: 
             {
                 type: 3,
