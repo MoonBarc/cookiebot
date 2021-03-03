@@ -1,3 +1,17 @@
+/*
+    Hello future people in the future.
+    This is literally the sloppiest code I have ever written at
+    my skill level. This was a very stupid project :)
+
+    Do not judge based on this (please)
+
+    Have fun with it (if you can)
+*/
+
+// Cookie Bot 
+const version = "v0.0.1"
+// Created by MoonBarc because he was bored.
+
 const djs = require('discord.js')
 const fs = require("fs").promises
 const dotenv = require('dotenv')
