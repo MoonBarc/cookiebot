@@ -200,7 +200,7 @@ bot.ws.on('INTERACTION_CREATE', async interaction => {
         if(!interaction?.data?.options || !interaction?.data?.options?.length) {
             await bot.api.interactions(interaction.id, interaction.token).callback.post({data: 
                 {
-                    type: 3,
+                    type: 4,
                     data: {
                         content: `Here's your cookie, <@${interaction.member.user.id}>!`
                     }
@@ -214,7 +214,7 @@ bot.ws.on('INTERACTION_CREATE', async interaction => {
         if(interaction.data.options[0].value == interaction.member.user.id) {
             bot.api.interactions(interaction.id, interaction.token).callback.post({data: 
                 {
-                    type: 3,
+                    type: 4,
                     data: {
                         content: `Cookie Bot is upset,\nyou can't give yourself a cookie!\njust run /cookie so i can give you a cookie\n>:(`,
                         flags: 1 << 6
@@ -225,7 +225,7 @@ bot.ws.on('INTERACTION_CREATE', async interaction => {
         }
         await bot.api.interactions(interaction.id, interaction.token).callback.post({data: 
             {
-                type: 3,
+                type: 4,
                 data: {
                     content: interaction.data?.options[1]?.value ? `<@${interaction.data.options[0].value}>, someone gave you a cookie!` : `<@${interaction.data.options[0].value}>, you got a cookie from <@${interaction.member.user.id}>!`,
                     // flags: 1 << 6 
@@ -238,7 +238,7 @@ bot.ws.on('INTERACTION_CREATE', async interaction => {
         if(!config.admins.includes(interaction.member.user.id)) {
             bot.api.interactions(interaction.id, interaction.token).callback.post({data: 
                 {
-                    type: 3,
+                    type: 4,
                     data: {
                         content: `Cookie Bot is upset,\nyou aren't supposed to use this command!!!`,
                         flags: 1 << 6
@@ -250,7 +250,7 @@ bot.ws.on('INTERACTION_CREATE', async interaction => {
         if(interaction.data.options) {
             await bot.api.interactions(interaction.id, interaction.token).callback.post({data: 
                 {
-                    type: 3,
+                    type: 4,
                     data: {
                         content: `> ${interaction.data.options[0].value}\n - <@${bot.user.id}>`,
                         // flags: 1 << 6 
@@ -260,7 +260,7 @@ bot.ws.on('INTERACTION_CREATE', async interaction => {
         }else{
             await bot.api.interactions(interaction.id, interaction.token).callback.post({data: 
                 {
-                    type: 3,
+                    type: 4,
                     data: {
                         content: `> Cookies are cool\n - <@${bot.user.id}>`,
                         // flags: 1 << 6 
